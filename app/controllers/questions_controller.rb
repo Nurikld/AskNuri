@@ -2,15 +2,15 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy hide]
   def create
     @question = Question.create(question_params)
-    redirect_to question_path(@question)
+    redirect_to question_path(@question), notice: 'Ваш вопрос создан!/QUESTION CREATED'
   end
   def update
     @question = Question.update(question_params)
-    redirect_to question_path(@question)
+    redirect_to question_path(@question), notice: 'Вопрос обновили!/QUESTION EDITED'
   end
   def destroy
     @question.destroy
-    redirect_to questions_path
+    redirect_to questions_path, notice: 'Вопрос удалён!/QUESTION DELETED'
   end
 
   def show
